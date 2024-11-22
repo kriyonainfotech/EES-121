@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken')
 
 const register = async (req, res) => {
     try {
-        const { name, email, password, cpassword, contect, address, role, business_category, business_name, business_address, send_request, received_request } = req.body
+        const { name, email, password, cpassword, contact, address, role, business_category, business_name, business_address, send_request, received_request } = req.body
         //   console.log(req.body);
-        if (!name || !email || !password || !cpassword || !contect || !address || !business_category || !business_name | !business_address) {
+        if (!name || !email || !password || !cpassword || !contact || !address) {
             return res.status(400).send({
                 success: false,
                 message: "Please fill all the fields"
@@ -31,7 +31,7 @@ const register = async (req, res) => {
             email: email,
             password: password,
             cpassword: cpassword,
-            contect: contect,
+            contact: contact,
             address: address,
             role: role,
             business_category: business_category,

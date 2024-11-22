@@ -35,14 +35,14 @@ const deleteUser = async (req, res) => {
 }
 const updateUser = async (req, res) => {
     try {
-        const { name, email, password, cpassword, contect, address,role, business_category, business_name, business_address, send_request, received_request } = req.body
+        const { name, email, password, cpassword, contact, address,role, business_category, business_name, business_address, send_request, received_request } = req.body
         const id = req.query.id
         const updatedUser = await UserModle.findByIdAndUpdate(id,{
             name:name,
             email:email,
             password:password,
             cpassword:cpassword,
-            contect:contect,
+            contact:contact,
             address:address,
             role:role,
             business_category:business_category,

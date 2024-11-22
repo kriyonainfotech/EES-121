@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    contect : {
+    contact : {
         type : String,
         required : true
     },
@@ -27,19 +27,19 @@ const userSchema = mongoose.Schema({
     },
     role:{
         type : String,
-        required : true
+        required : false
     },
     business_category : {
         type: Array,
-        required : true
+        required : false
       },
     business_name : {
         type : String,
-        required : true
+        required : false
     },
     business_address : {
         type : String,
-        required : true
+        required : false
     },
     send_request :{
         type : String,
