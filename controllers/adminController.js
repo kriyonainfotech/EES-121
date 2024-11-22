@@ -18,12 +18,14 @@ const viewUser = async (req, res) => {
 }
 const deleteUser = async (req, res) => {
     try {
-        const id = req.query.id
-        const user = await UserModle.findByIdAndDelete(id)
-        return res.status(200).send({
-            success: true,
-            message: "User deleted successfully"
-        })
+        const id = req.body;
+        console.log(id);
+        
+        await UserModle.findByIdAndDelete(id) 
+        return res.status(200).send({ 
+            success: true, 
+            message: "User deleted successfully" 
+        }) 
     } catch (error) {
         return res.status(500).send({
             success: false,
