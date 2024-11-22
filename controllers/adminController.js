@@ -16,11 +16,12 @@ const viewUser = async (req, res) => {
 
 
 }
+// https://right-seagull-lightly.ngrok-free.app/admin/deleteUser
 const deleteUser = async (req, res) => {
     try {
-        const id = req.body;
-        console.log(id);
         
+        const {id}= req.body;
+         console.log(id);
         await UserModle.findByIdAndDelete(id) 
         return res.status(200).send({ 
             success: true, 
@@ -37,7 +38,7 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const { name, email, password, cpassword, contact, address,role, business_category, business_name, business_address, send_request, received_request } = req.body
-        const id = req.query.id
+        const {id} = req.body;
         const updatedUser = await UserModle.findByIdAndUpdate(id,{
             name:name,
             email:email,
