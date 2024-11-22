@@ -22,8 +22,7 @@ const deleteUser = async (req, res) => {
         const user = await UserModle.findByIdAndDelete(id)
         return res.status(200).send({
             success: true,
-            message: "User deleted successfully",
-            user
+            message: "User deleted successfully"
         })
     } catch (error) {
         return res.status(500).send({
