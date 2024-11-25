@@ -6,6 +6,7 @@ import {
 	NftMarketplace,
 	Users,
 	CreateUser,
+	EditUser,
 	Profile,
 	Register,
 	PageNotFound,
@@ -16,7 +17,7 @@ const App = () => {
 	const router = createBrowserRouter([
 		{
 			path: "/dashboard",
-			element: <Layout />,
+			element: <Layout />,	
 			children: [
 
 				{
@@ -34,6 +35,10 @@ const App = () => {
 				{
 					path: "createUser",
 					element: <CreateUser />,
+				},
+				{
+					path: "editUser",
+					element: <EditUser />,
 				},
 				{
 					path: "profile",

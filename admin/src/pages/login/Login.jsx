@@ -5,35 +5,32 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [isLogin, setIsLogin] = useState(false);
   const location = useLocation();
   const naviget = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Perform login logic here. You would typically make an API request
-    // to your backend to authenticate the user.
     try {
-      // Example API request to authenticate user
-      const response = await fetch('https://right-seagull-lightly.ngrok-free.app/login', {
+      const response = await fetch('http://localhost:4000/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' ,
+          'Accept': 'application/json',
+          withCredentials: true
+        },
+        
         body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
-        // setIsLogin(true);
-        // naviget('/dashboard');
-
-        // Redirect to the dashboard or home page after successful login.
         window.location.href = '/dashboard';
+        naviget('/dashboard')
         console.log('Login successful!');
       } else {
         // Handle error responses
         const errorData = await response.json();
         setErrorMessage(errorData.message || 'Invalid credentials');
       }
+      
     } catch (error) {
       setErrorMessage('An error occurred. Please try again later.');
     }

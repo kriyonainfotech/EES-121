@@ -1,54 +1,46 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Registr() {
   const [name, setName] = useState('');
- const [email, setEmail] = useState('');
- const [password, setPassword] = useState('');
- const [confirmPassword, setConfirmPassword] = useState('');
- const [mobileNumber, setMobileNumber] = useState('');
- const [address, setAddress] = useState('');
- const navigete = useNavigate();
- const handleSubmit = async (e) => {
-   e.preventDefault();
-   const newdata = {name, email, password, mobileNumber, address};
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [cpassword, setCpassword] = useState('');
+  const [contact, setContact] = useState('');
+  const [role, setRole] = useState('');
+  const [address, setAddress] = useState('');
+  const navigete = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // const newdata = { name, email, password,confirmPassword, role, contact, address };
 
-   try {
-     const response = await fetch('https://right-seagull-lightly.ngrok-free.app/register',  {
-      name: name,
-      email: email,
-      password: password,
-      mobileNumber:mobileNumber,
-      address:address
-  }, {
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      
-      body: JSON.stringify(newdata),
-  });
-      
-       const data = await response.data;
-       console.log(data);
-       alert('User Added Successfully');
-       navigete('/')
+    try {
+      const record = await axios.post(`http://localhost:4000/register`, {
+          name: name,
+          email: email,
+          password: password,
+          cpassword: cpassword,
+          role: role,
+          contact: contact,
+          address: address
+      }, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      const data = await record.data;
+      console.log(data);
+      alert('User Added Successfully');
+      navigete('/')
 
-     if (response.ok) {
-       // Handle successful business registration (e.g., reset form , show success message)
-       setName('');
-       setEmail('');
-       setPassword('');
-       setConfirmPassword('');
-       setMobileNumber('');
-       setAddress('');
-     } else {
-       // Handle error
-       console.error('Error registering business:', response.statusText);
-     }
-   } catch (error) {
-     console.error('Error:', error);
-   }
- };
+  } catch (error) {
+      console.log(error);
+      return false;
+  }
+
+}
+
 
   return (
     <div className="p-4">
@@ -88,18 +80,28 @@ function Registr() {
           <label className="block text-sm font-medium">Confirm Password</label>
           <input
             type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={cpassword}
+            onChange={(e) => setCpassword(e.target.value)}
             className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             required
           />
         </div>
         <div>
-          <label className="block text-sm font-medium">Mobile Number</label>
+          <label className="block text-sm font-medium">Contact</label>
           <input
             type="text"
-            value={mobileNumber}
-            onChange={(e) => setMobileNumber(e.target.value)}
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Role</label>
+          <input
+            type="text"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
             className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             required
           />
@@ -114,15 +116,15 @@ function Registr() {
             required
           />
         </div>
-      
+
         <button
           type="submit"
           className="w-full bg-blue-500 text-white font -bold py-2 rounded-md hover:bg-blue-600"
         >
-          Register 
+          Register
         </button>
         <p className="mt-4 text-sm text-center text-gray-600">
-        Allready have an account? <Link to={'/'} className="text-blue-600 hover:underline">login </Link>
+          Allready have an account? <Link to={'/'} className="text-blue-600 hover:underline">login </Link>
         </p>
       </form>
     </div>

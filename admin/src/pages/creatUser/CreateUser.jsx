@@ -211,10 +211,10 @@ const CreateUser = () => {
 
  return (
    <div className="p-4">
-     <h1 className="text-2xl font-bold mb-4">Create User</h1>
-     <form onSubmit={handleSubmit} method='post' className="space-y-4">
+     <h1 className="text-2xl dark:text-white font-bold mb-4">Create User</h1>
+     <form onSubmit={handleSubmit} method='post' className="space-y-4 dark:text-white">
        <div>
-         <label className="block text-sm font-medium">Name</label>
+         <label className="block text-sm font-medium pb-2">Name</label>
          <input
            type="name"
            value={name}
@@ -224,7 +224,7 @@ const CreateUser = () => {
          />
        </div>
        <div>
-         <label className="block text-sm font-medium">Email</label>
+         <label className="block text-sm font-medium pb-2">Email</label>
          <input
            type="email"
            value={email}
@@ -234,7 +234,7 @@ const CreateUser = () => {
          />
        </div>
        <div>
-         <label className="block text-sm font-medium">Password</label>
+         <label className="block text-sm font-medium pb-2">Password</label>
          <input
            type="password"
            value={password}
@@ -244,7 +244,7 @@ const CreateUser = () => {
          />
        </div>
        <div>
-         <label className="block text-sm font-medium">Confirm Password</label>
+         <label className="block text-sm font-medium pb-2">Confirm Password</label>
          <input
            type="password"
            value={confirmPassword}
@@ -254,7 +254,7 @@ const CreateUser = () => {
          />
        </div>
        <div>
-         <label className="block text-sm font-medium">Mobile Number</label>
+         <label className="block text-sm font-medium pb-2">Mobile Number</label>
          <input
            type="text"
            value={mobileNumber}
@@ -264,7 +264,7 @@ const CreateUser = () => {
          />
        </div>
        <div>
-         <label className="block text-sm font-medium">Address</label>
+         <label className="block text-sm font-medium pb-2">Address</label>
          <input
            type="text"
            value={address}
@@ -274,7 +274,7 @@ const CreateUser = () => {
          />
        </div>
 	   <div>
-         <label className="block text-sm font-medium">Business Name</label>
+         <label className="block text-sm font-medium pb-2">Business Name</label>
          <input
            type="text"
            value={businessName}
@@ -284,7 +284,7 @@ const CreateUser = () => {
          />
        </div>
        <div>
-         <label className="block text-sm font-medium">Business Category</label>
+         <label className="block text-sm font-medium pb-2">Business Category</label>
           <select
             id="businessCategory"
             name="businessCategory"
@@ -300,7 +300,7 @@ const CreateUser = () => {
        </div>
       
        <div>
-         <label className="block text-sm font-medium">Business Address</label>
+         <label className="block text-sm font-medium pb-2">Business Address</label>
          <input
            type="text"
            value={businessAddress}

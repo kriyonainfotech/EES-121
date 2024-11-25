@@ -35,6 +35,7 @@ export const sidebarLinks = [
 		icon: RiDashboardLine,
 		activeIcon: RiDashboardFill,
 	},
+	
 	{
 		name: "profile",
 		path: "/dashboard/profile",
@@ -42,15 +43,15 @@ export const sidebarLinks = [
 		activeIcon: HiUser,
 	},
 	{
-		name: "register",
+		name: "logout",
 		path: "/register",
 		icon: RiLock2Line,
 		activeIcon: RiLock2Fill,
 	},
-	{
-		name: "login",
-		path: "/login",
-		icon: RiLock2Line,
-		activeIcon: RiLock2Fill,
-	},
+	// {
+	// 	name: "login",
+	// 	path: "/login",
+	// 	icon: RiLock2Line,
+	// 	activeIcon: RiLock2Fill,
+	// },
 ];
