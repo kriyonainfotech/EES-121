@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 const register = async (req, res) => {
     try {
-        const { name, email, password, cpassword, contact, address, role, business_category, business_name, business_address, send_request, received_request } = req.body
+        const { name, email, password, cpassword, contact, address } = req.body
         //   console.log(req.body);
         if (!name || !email || !password || !cpassword || !contact || !address) {
             return res.status(400).send({
@@ -33,13 +33,6 @@ const register = async (req, res) => {
             cpassword: cpassword,
             contact: contact,
             address: address,
-            role: role,
-            business_category: business_category,
-            business_name: business_name,
-            business_address: business_address,
-            send_request: send_request,
-            received_request: received_request
-
         })
         return res.status(200).send({
             success: true,
@@ -77,15 +70,15 @@ const login = async (req, res) => {
                 expiresIn: '24h'
             }
         );
-        res.cookie('auth', token);
+        res.cookie("token", token, {
+            httpOnly: true, // Prevents JavaScript access
+            secure: false, // Set true in production (requires HTTPS)
+            sameSite: "lax",
+        });
 
-
-        return res.status(200).send({
-            success: true,
-            message: "User login successfully",
-            token: token,
-            user
-        })
+        return res.json({ 
+            success: true, 
+            message: "Login successful" });
 
     } catch (error) {
         return res.status(500).send({
@@ -95,7 +88,22 @@ const login = async (req, res) => {
     }
 }
 
-const user = async (req, res) => {
+const dashboard =  (req, res) => {
+    const token = req.cookies.token;
+  
+    if (!token) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+  
+    try {
+      const decoded = jwt.verify(token, JWT_SECRET);
+      res.json({ success: true, message: "Welcome to the dashboard", user: decoded });
+    } catch (err) {
+      res.status(401).json({ success: false, message: "Invalid token" });
+    }
+}
+
+const users = async (req, res) => {
     try {
         const user = await UserModle.find({})
         return res.status(200).send({
@@ -126,4 +134,4 @@ const logout = async (req, res) => {
     }
 
 }
-module.exports = { register, login, user,logout }
+module.exports = { register, login, users, logout ,dashboard}

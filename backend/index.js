@@ -3,15 +3,16 @@ const express = require('express');
 const app = express();
 const connectDB = require('./config/db');
 const port = process.env.PORT || 3000;
-connectDB();
-const cors = require('cors');
+connectDB()
 const bodyParser = require("body-parser");
-const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
+
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(express.json());
 
 app.use(cookieParser());
 app.use(express.json());
-
-app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded());
 

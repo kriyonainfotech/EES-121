@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const userSchema = mongoose.Schema({
+const bussinessSchema = mongoose.Schema({
     name : {
         type :String,
         required : true
@@ -29,17 +29,17 @@ const userSchema = mongoose.Schema({
         type : String,
         default:"User"
     },
-    businessCategory : {
+    business_category : {
         type: Array,
-        
+        required : false
       },
-    businessName : {
+    business_name : {
         type : String,
-      
+        required : false
     },
-    businessAddress : {
+    business_address : {
         type : String,
-       
+        required : false
     },
     send_request :{
         type : String,
@@ -50,5 +50,5 @@ const userSchema = mongoose.Schema({
         default:null
     }
 })
-const user = mongoose.model("user", userSchema);
-module.exports = user
+const BussinessCat = mongoose.model("bussinessCategory", bussinessSchema);
+module.exports = BussinessCat
