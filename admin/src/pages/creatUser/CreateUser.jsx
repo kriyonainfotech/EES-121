@@ -181,7 +181,7 @@ const CreateUser = () => {
    const newBusiness = {name, email, password, mobileNumber, address, businessCategory, businessName, businessAddress };
 
    try {
-     const response = await fetch('https://right-seagull-lightly.ngrok-free.app/register', {
+     const response = await fetch('https://ess-backend.vercel.app/register', {
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',

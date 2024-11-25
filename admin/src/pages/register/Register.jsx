@@ -16,7 +16,7 @@ function Registr() {
     // const newdata = { name, email, password,confirmPassword, role, contact, address };
 
     try {
-      const record = await axios.post(`http://localhost:4000/register`, {
+      const record = await axios.post(`https://ess-backend.vercel.app/register`, {
           name: name,
           email: email,
           password: password,
